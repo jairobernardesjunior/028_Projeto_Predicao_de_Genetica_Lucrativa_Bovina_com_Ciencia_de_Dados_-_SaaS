@@ -1,0 +1,56 @@
+DATAFILE
+fenotipos_raw.txt
+TRAITS
+3 4 5 6 7 8 9 10 11 14
+RESIDUAL_VARIANCE
+1.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0
+0.0 1.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0
+0.0 0.0 1.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0
+0.0 0.0 0.0 1.0 0.0 0.0 0.0 0.0 0.0 0.0
+0.0 0.0 0.0 0.0 1.0 0.0 0.0 0.0 0.0 0.0
+0.0 0.0 0.0 0.0 0.0 1.0 0.0 0.0 0.0 0.0
+0.0 0.0 0.0 0.0 0.0 0.0 1.0 0.0 0.0 0.0
+0.0 0.0 0.0 0.0 0.0 0.0 0.0 1.0 0.0 0.0
+0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 1.0 0.0
+0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 1.0
+EFFECT
+2 2 2 2 2 2 2 2 2 2 cross alpha     # Fixo: GC
+EFFECT
+16 16 16 16 16 16 16 16 16 16 cross alpha     # Fixo: Fazenda
+EFFECT
+17 17 17 17 17 17 17 17 17 17 cross alpha     # Fixo: Estacao
+EFFECT
+18 18 18 18 18 18 18 18 18 18 cross alpha     # Fixo: Lote_Manejo
+EFFECT
+19 19 19 19 19 19 19 19 19 19 cross alpha     # Fixo: Regime_Alim
+EFFECT
+20 20 20 20 20 20 20 20 20 20 cross alpha     # Fixo: Tipo_Pastagem
+EFFECT
+21 21 21 21 21 21 21 21 21 21 cross alpha     # Fixo: Localidade_Bloco
+EFFECT
+23 23 23 23 23 23 23 23 23 23 cross alpha     # Fixo: Piquete
+EFFECT
+30 30 30 30 30 30 30 30 30 30 cross alpha     # Fixo: Sexo
+EFFECT
+31 31 31 31 31 31 31 31 31 31 cross alpha     # Fixo: Geracao
+EFFECT
+32 32 32 32 32 32 32 32 32 32 cross alpha     # Fixo: Raca
+EFFECT
+25 25 25 25 25 25 25 25 25 25 cov             # Cov: itu_media
+EFFECT
+26 26 26 26 26 26 26 26 26 26 cov             # Cov: itu_dp
+EFFECT
+27 27 27 27 27 27 27 27 27 27 cov             # Cov: itu_max
+EFFECT
+28 28 28 28 28 28 28 28 28 28 cov             # Cov: itu_min
+EFFECT
+29 29 29 29 29 29 29 29 29 29 cov             # Cov: itu_leituras_criticas
+EFFECT
+1 1 1 1 1 1 1 1 1 1 cross alpha     # Animal
+RANDOM
+animal
+FILE
+pedigree_raw.txt
+SNP_FILE
+genotipos_raw.txt
+OPTION missing -999

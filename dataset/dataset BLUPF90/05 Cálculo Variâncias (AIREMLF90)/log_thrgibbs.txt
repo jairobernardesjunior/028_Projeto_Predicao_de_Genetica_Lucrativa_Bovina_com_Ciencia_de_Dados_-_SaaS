@@ -1,0 +1,70 @@
+ name of parameter file?
+renf90_categ.par
+     BLUPF90+ ver. 2.72
+
+ Parameter file:             renf90_categ.par
+ Data file:                  renf90_categ.dat
+ Number of Traits             3
+ Number of Effects           17
+ Position of Observations      1  2  3
+ Position of Weights           0  0  0
+ Value of Missing Trait/Observation           0
+
+EFFECTS
+ #  type                position (2)        levels   [positions for nested]
+    1  cross-classified       4    4    4         6
+    2  cross-classified       5    5    5         1
+    3  cross-classified       6    6    6         2
+    4  cross-classified       7    7    7         5
+    5  cross-classified       8    8    8         2
+    6  cross-classified       9    9    9         4
+    7  cross-classified      10   10   10         2
+    8  cross-classified      11   11   11         9
+    9  cross-classified      12   12   12         1
+   10  cross-classified      13   13   13         1
+   11  cross-classified      14   14   14         1
+   12  covariable            15   15   15         1
+   13  covariable            16   16   16         1
+   14  covariable            17   17   17         1
+   15  covariable            18   18   18         1
+   16  covariable            19   19   19         1
+   17  cross-classified      20   20   20        27
+
+ Residual (co)variance Matrix
+  1.0000      0.0000      0.0000    
+  0.0000      1.0000      0.0000    
+  0.0000      0.0000      1.0000    
+
+ Random Effect(s)   17
+ Type of Random Effect:      additive animal with unknown parent groups and inbreeding
+ Pedigree File:              renadd_categ17.ped                                                                                                                                                                                                                                        
+ trait   effect    (CO)VARIANCES
+  1      17     1.000      0.1000      0.1000    
+  2      17    0.1000       1.000      0.1000    
+  3      17    0.1000      0.1000       1.000    
+
+ REMARKS
+  (1) Weight position 0 means no weights utilized
+  (2) Effect positions of 0 for some effects and traits means that such
+      effects are missing for specified traits
+ 
+
+ * The limited number of OpenMP threads = 4
+
+ * BLUPF90+ sparse operations version
+ 
+ * START JOB (BLUPF90): 03-30-2026  08h 58m 48s 996
+ 
+ *** Statistical method from OPTION thrgibbs1           
+ * missing observation (default=0):        -999
+ 
+
+ Options read from parameter file for genomic
+ * SNP format: BLUPF90 standard (text)
+ * SNP file: genotipos_raw.txt
+ * SNP Xref file: genotipos_raw.txt_XrefID
+ * Set the threshold to Stop the analysis if low cor(A22,G) (default 0.3): -1.0
+ IJA4 version
+ Data record length =           20
+ !!! Wrong option: choose BLUP or VCE !!!
+

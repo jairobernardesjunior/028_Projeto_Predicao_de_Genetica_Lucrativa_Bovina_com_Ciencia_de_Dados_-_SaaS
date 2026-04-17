@@ -1,0 +1,52 @@
+# BLUPF90 parameter file created by RENUMF90
+DATAFILE
+ renf90_categ.dat
+NUMBER_OF_TRAITS
+           3
+NUMBER_OF_EFFECTS
+          17
+OBSERVATION(S)
+    1    2    3
+WEIGHT(S)
+ 
+EFFECTS: POSITIONS_IN_DATAFILE NUMBER_OF_LEVELS TYPE_OF_EFFECT[EFFECT NESTED]
+ 4 4 4         6 cross 
+ 5 5 5         1 cross 
+ 6 6 6         2 cross 
+ 7 7 7         5 cross 
+ 8 8 8         2 cross 
+ 9 9 9         4 cross 
+ 10 10 10         2 cross 
+ 11 11 11         9 cross 
+ 12 12 12         1 cross 
+ 13 13 13         1 cross 
+ 14 14 14         1 cross 
+ 15 15 15 1 cov 
+ 16 16 16 1 cov 
+ 17 17 17 1 cov 
+ 18 18 18 1 cov 
+ 19 19 19 1 cov 
+ 20 20 20        27 cross 
+RANDOM_RESIDUAL VALUES
+   1.0000       0.0000       0.0000    
+   0.0000       1.0000       0.0000    
+   0.0000       0.0000       1.0000    
+ RANDOM_GROUP
+    17
+ RANDOM_TYPE
+ add_an_upginb
+ FILE
+renadd_categ17.ped                                                                    
+(CO)VARIANCES
+   1.0000      0.10000      0.10000    
+  0.10000       1.0000      0.10000    
+  0.10000      0.10000       1.0000    
+OPTION SNP_file genotipos_raw.txt
+OPTION missing -999
+OPTION categorical 1 1
+OPTION categorical 2 1
+OPTION categorical 3 1
+
+OPTION thrStopCorAG -1
+
+OPTION method thrgibbs1

@@ -1,0 +1,11 @@
+﻿id_peso;descricao;nome_peso;valor_estimado
+1;Peso à Desmama;PD_kg;17.07
+2;Peso ao Sobreano;PS_kg;4.75
+3;Consumo Alimentar Residual;CAR_kg-dia;-2.5
+4;Stayability (Longevidade);STAY_%;73.21
+5;Área de Olho de Lombo;AOL_cm2;2.5
+6;Espessura de Gordura;EGS_mm;8.0
+7;Marmoreio;MAR_%;15.0
+8;Peso ao Nascimento;PN_kg;-10.0
+9;Idade ao Primeiro Parto;IPP_dias;-1.2
+10;Perímetro Escrotal;PE_cm;12.0

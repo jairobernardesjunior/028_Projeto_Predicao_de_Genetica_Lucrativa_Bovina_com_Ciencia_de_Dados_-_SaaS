@@ -1,0 +1,414 @@
+ name of parameter file?
+renf90_linear.par
+     BLUPF90+ ver. 2.72
+
+ Parameter file:             renf90_linear.par
+ Data file:                  renf90_linear.dat
+ Number of Traits            10
+ Number of Effects           17
+ Position of Observations      1  2  3  4  5  6  7  8  9 10
+ Position of Weights           0  0  0  0  0  0  0  0  0  0
+ Value of Missing Trait/Observation           0
+
+EFFECTS
+ #  type                position (2)        levels   [positions for nested]
+    1  cross-classified      11   11   11   11   11   11   11   11   11   11         6
+    2  cross-classified      12   12   12   12   12   12   12   12   12   12         1
+    3  cross-classified      13   13   13   13   13   13   13   13   13   13         2
+    4  cross-classified      14   14   14   14   14   14   14   14   14   14         5
+    5  cross-classified      15   15   15   15   15   15   15   15   15   15         2
+    6  cross-classified      16   16   16   16   16   16   16   16   16   16         4
+    7  cross-classified      17   17   17   17   17   17   17   17   17   17         2
+    8  cross-classified      18   18   18   18   18   18   18   18   18   18         9
+    9  cross-classified      19   19   19   19   19   19   19   19   19   19         1
+   10  cross-classified      20   20   20   20   20   20   20   20   20   20         1
+   11  cross-classified      21   21   21   21   21   21   21   21   21   21         1
+   12  covariable            22   22   22   22   22   22   22   22   22   22         1
+   13  covariable            23   23   23   23   23   23   23   23   23   23         1
+   14  covariable            24   24   24   24   24   24   24   24   24   24         1
+   15  covariable            25   25   25   25   25   25   25   25   25   25         1
+   16  covariable            26   26   26   26   26   26   26   26   26   26         1
+   17  cross-classified      27   27   27   27   27   27   27   27   27   27        27
+
+ Residual (co)variance Matrix
+  1.0000      0.0000      0.0000      0.0000      0.0000      0.0000      0.0000      0.0000      0.0000      0.0000    
+  0.0000      1.0000      0.0000      0.0000      0.0000      0.0000      0.0000      0.0000      0.0000      0.0000    
+  0.0000      0.0000      1.0000      0.0000      0.0000      0.0000      0.0000      0.0000      0.0000      0.0000    
+  0.0000      0.0000      0.0000      1.0000      0.0000      0.0000      0.0000      0.0000      0.0000      0.0000    
+  0.0000      0.0000      0.0000      0.0000      1.0000      0.0000      0.0000      0.0000      0.0000      0.0000    
+  0.0000      0.0000      0.0000      0.0000      0.0000      1.0000      0.0000      0.0000      0.0000      0.0000    
+  0.0000      0.0000      0.0000      0.0000      0.0000      0.0000      1.0000      0.0000      0.0000      0.0000    
+  0.0000      0.0000      0.0000      0.0000      0.0000      0.0000      0.0000      1.0000      0.0000      0.0000    
+  0.0000      0.0000      0.0000      0.0000      0.0000      0.0000      0.0000      0.0000      1.0000      0.0000    
+  0.0000      0.0000      0.0000      0.0000      0.0000      0.0000      0.0000      0.0000      0.0000      1.0000    
+
+ Random Effect(s)   17
+ Type of Random Effect:      additive animal with unknown parent groups and inbreeding
+ Pedigree File:              renadd_linear17.ped                                                                                                                                                                                                                                       
+ trait   effect    (CO)VARIANCES
+  1      17     1.000      0.1000      0.1000      0.1000      0.1000      0.1000      0.1000      0.1000      0.1000      0.1000    
+  2      17    0.1000       1.000      0.1000      0.1000      0.1000      0.1000      0.1000      0.1000      0.1000      0.1000    
+  3      17    0.1000      0.1000       1.000      0.1000      0.1000      0.1000      0.1000      0.1000      0.1000      0.1000    
+  4      17    0.1000      0.1000      0.1000       1.000      0.1000      0.1000      0.1000      0.1000      0.1000      0.1000    
+  5      17    0.1000      0.1000      0.1000      0.1000       1.000      0.1000      0.1000      0.1000      0.1000      0.1000    
+  6      17    0.1000      0.1000      0.1000      0.1000      0.1000       1.000      0.1000      0.1000      0.1000      0.1000    
+  7      17    0.1000      0.1000      0.1000      0.1000      0.1000      0.1000       1.000      0.1000      0.1000      0.1000    
+  8      17    0.1000      0.1000      0.1000      0.1000      0.1000      0.1000      0.1000       1.000      0.1000      0.1000    
+  9      17    0.1000      0.1000      0.1000      0.1000      0.1000      0.1000      0.1000      0.1000       1.000      0.1000    
+ 10      17    0.1000      0.1000      0.1000      0.1000      0.1000      0.1000      0.1000      0.1000      0.1000       1.000    
+
+ REMARKS
+  (1) Weight position 0 means no weights utilized
+  (2) Effect positions of 0 for some effects and traits means that such
+      effects are missing for specified traits
+ 
+
+ * The limited number of OpenMP threads = 4
+
+ * BLUPF90+ sparse operations version
+ 
+ * START JOB (BLUPF90): 03-30-2026  09h 08m 03s 282
+ 
+ * missing observation (default=0):        -999
+ 
+
+ Options read from parameter file for genomic
+ * SNP format: BLUPF90 standard (text)
+ * SNP file: genotipos_raw.txt
+ * SNP Xref file: genotipos_raw.txt_XrefID
+ * Set the threshold to Stop the analysis if low cor(A22,G) (default 0.3): -1.0
+ IJA4 version
+ Data record length =           27
+ 
+ *** Linear mixed model solver ***
+ 
+
+Read 10 records in 31.95 s,  6570 nonzeroes
+
+
+Read 27 additive pedigrees
+ 
+ *--------------------------------------------------------------*
+ *                 Genomic Library: Dist Version 1.322          *
+ *                                                              *
+ *             Optimized OpenMP Version -   4 threads            *
+ *                                                              *
+ *  Modified relationship matrix (H) created for effect:  17    *
+ *--------------------------------------------------------------*
+ 
+ Read 27 animals from pedigree file: "C:\Users\KR\AppData\Local\Temp\tmpleamac_d\renadd_linear17.ped"
+ Number of Genotyped Animals: 26
+
+ Creating A22 
+    Extracting subset of: 26 pedigrees from: 27 elapsed time:     0.0000
+    Calculating A22 Matrix by Colleau OpenMP...elapsed time: .0001
+    Numbers of threads=1 4
+
+ Reading SNP file
+    Column position in file for the first marker: 17
+    Format to read SNP file: (16x,400000i1)                                    
+    Number of SNPs: 20
+    Format: integer genotypes (0 to 5) to double-precision array
+    Number of Genotyped animals: 26
+    Reading SNP file elapsed time: .00
+ 
+ Statistics of alleles frequencies in the current population
+    N:             20
+    Mean:       0.498
+    Min:        0.000
+    Max:        1.000
+    Var:        0.101
+ 
+ Quality Control - SNPs with Call Rate < callrate ( 0.90) will removed: 0
+ 
+ Quality Control - SNPs with MAF < minfreq ( 0.05) will removed: 7
+ 
+ Quality Control - Monomorphic SNPs will be removed: 2
+
+ Quality Control - Removed Animals with Call rate < callrate ( 0.90): 0
+
+ Quality Control - Check Parent-Progeny Mendelian conflicts
+
+    Total animals: 27 - Genotyped animals: 26 - Effective: 26
+
+    Number of pairs Individual - Sire: 9
+    Number of pairs Individual - Dam: 9
+    Number of trios Individual - Sire - Dam: 9
+
+    No sex Chromosome information is available !!
+    QC for parent-progeny conflicts, HWE or heritability of gene content, could eliminate SNPs in sex Chr
+    Provide map information and sex Chr to perform QC using autosomes
+
+ Checking SNPs for Mendelian conflicts
+    SNPs not masked, low # parent-progeny evaluations: 18
+
+ Checking Animals for Mendelian conflicts
+
+    Total number of effective SNP for checks on Animals: 13
+
+    Number of Parent-Progeny Mendelian Conflicts: 0
+
+ Number of effective SNPs (after QC): 13
+
+ Number of effective Individuals (after QC): 26
+ 
+ Statistics of alleles frequencies in the current population after
+ Quality Control (MAF, monomorphic, call rate, HWE, Mendelian conflicts)
+    N:             13
+    Mean:       0.460
+    Min:        0.135
+    Max:        0.596
+    Var:        0.020
+
+ Missing markers:        182
+ Individuals:            26
+ Markers per individual: 20
+ Missing markers (%):    35.000
+
+ Missing markers after cleaning:        0
+ Individuals after cleaning:            26
+ Markers per individual after cleaning: 13
+ Missing markers after cleaning (%):     0.000
+
+ Calculating G Matrix 
+    Dgemm MKL #threads=     1    4 Elapsed omp_get_time:     0.0000
+ 
+ Scale by Sum(2pq). Average:   5.98594674556213     
+
+ Detecting samples with similar genotypes
+    elapsed time=     0.0
+
+ *****************************************
+ *  Possible genotype duplicates samples *
+ *****************************************
+
+    i-j number of sample , i-j renumber Id, G(i,j), G(i,i), G(j,j), r(i,j) 
+           5       1      11       5  0.1589  0.1589  0.1589  1.0000
+          13       1      14       5  0.1589  0.1589  0.1589  1.0000
+          19       1      20       5  0.1589  0.1589  0.1589  1.0000
+          24       1      25       5  0.1589  0.1589  0.1589  1.0000
+          10       2       4       9  0.2874  0.2874  0.2874  1.0000
+          11       2      12       9  0.2874  0.2874  0.2874  1.0000
+          22       2      23       9  0.2874  0.2874  0.2874  1.0000
+          25       2      26       9  0.2874  0.2874  0.2874  1.0000
+           9       3       8       2  0.6986  0.6986  0.6986  1.0000
+          16       3      17       2  0.6986  0.6986  0.6986  1.0000
+          20       3      21       2  0.7243  0.9171  0.6986  0.9049
+           8       4       3       7  0.4673  0.4673  0.4673  1.0000
+          14       4      15       7  0.4673  0.4673  0.4673  1.0000
+          23       4      24       7  0.4673  0.4673  0.4673  1.0000
+          26       4      27       7  0.4673  0.4673  0.4673  1.0000
+          13       5      14      11  0.1589  0.1589  0.1589  1.0000
+          19       5      20      11  0.1589  0.1589  0.1589  1.0000
+          24       5      25      11  0.1589  0.1589  0.1589  1.0000
+          12       6      13       6  0.0946  0.0946  0.0946  1.0000
+          15       7      16      10  0.2874  0.2874  0.2874  1.0000
+          14       8      15       3  0.4673  0.4673  0.4673  1.0000
+          23       8      24       3  0.4673  0.4673  0.4673  1.0000
+          26       8      27       3  0.4673  0.4673  0.4673  1.0000
+          16       9      17       8  0.6986  0.6986  0.6986  1.0000
+          20       9      21       8  0.7243  0.9171  0.6986  0.9049
+          11      10      12       4  0.2874  0.2874  0.2874  1.0000
+          22      10      23       4  0.2874  0.2874  0.2874  1.0000
+          25      10      26       4  0.2874  0.2874  0.2874  1.0000
+          22      11      23      12  0.2874  0.2874  0.2874  1.0000
+          25      11      26      12  0.2874  0.2874  0.2874  1.0000
+          19      13      20      14  0.1589  0.1589  0.1589  1.0000
+          24      13      25      14  0.1589  0.1589  0.1589  1.0000
+          23      14      24      15  0.4673  0.4673  0.4673  1.0000
+          26      14      27      15  0.4673  0.4673  0.4673  1.0000
+          20      16      21      17  0.7243  0.9171  0.6986  0.9049
+          24      19      25      20  0.1589  0.1589  0.1589  1.0000
+          25      22      26      23  0.2874  0.2874  0.2874  1.0000
+          26      23      27      24  0.4673  0.4673  0.4673  1.0000
+    elapsed time=     0.0
+ Tuning G prior to blending with A22
+
+ Tuning: Scale G matrix according to A22 -  Method: 2
+    Diagonal A:    1.000    Offdiagonal A:    0.030    All A:    0.067    Difference:   0.970
+    Diagonal G:    0.374    Offdiagonal G:   -0.015    All G:    0.000    Difference:   0.389
+    Diff G Diag - G OffDiag:    0.389    (da-oa)/(dg-og):    2.491
+    Diff A OffDiag - G OffDiag:    0.045
+    Diff A all - G all:    0.067
+    a + G*b; a:  0.067       b:  2.491
+ Method to select individuals: 1
+ Number of individual selected: 26
+ 
+ Blend G as alpha*G + beta*A22: (alpha,beta)     0.950     0.050
+
+ Frequency - Diagonal of G
+    N:          26
+    Mean:        1.000
+    Min:         0.338
+    Max:         2.284
+    Range:       0.097
+    Class:     20
+ 
+  #Class       Class   Count
+       1  0.3379           2
+       2  0.4353           6
+       3  0.5326           0
+       4  0.6299           0
+       5  0.7272           7
+       6  0.8245           0
+       7  0.9219           1
+       8   1.019           0
+       9   1.117           0
+      10   1.214           5
+      11   1.311           0
+      12   1.408           0
+      13   1.506           0
+      14   1.603           0
+      15   1.700           3
+      16   1.798           0
+      17   1.895           0
+      18   1.992           0
+      19   2.090           1
+      20   2.187           1
+      21   2.284           0
+ 
+
+ Check for diagonal of genomic relationship matrix
+
+ ** Low Diagonal of genotype 1  0.49 Not Removed
+ ** High Diagonal of genotype 3  1.77 Not Removed
+ ** Low Diagonal of genotype 5  0.49 Not Removed
+ ** Low Diagonal of genotype 6  0.34 Not Removed
+ ** High Diagonal of genotype 9  1.77 Not Removed
+ ** Low Diagonal of genotype 12  0.34 Not Removed
+ ** Low Diagonal of genotype 13  0.49 Not Removed
+ ** High Diagonal of genotype 16  1.77 Not Removed
+ ** High Diagonal of genotype 17  2.13 Not Removed
+ ** Low Diagonal of genotype 18  0.52 Not Removed
+ ** Low Diagonal of genotype 19  0.49 Not Removed
+ ** High Diagonal of genotype 20  2.28 Not Removed
+ ** Low Diagonal of genotype 24  0.49 Not Removed
+
+ Check for diagonal of genomic relationship matrix, genotypes not removed: 13
+
+ ------------------------------
+  Final Pedigree-Based Matrix 
+ ------------------------------
+ 
+ Statistic of Rel. Matrix A22
+                                N      Mean       Min       Max       Var
+     Diagonal                  26     1.000     1.000     1.000     0.000
+     Off-diagonal             650     0.030     0.000     0.500     0.014
+ 
+
+ ----------------------
+  Final Genomic Matrix 
+ ----------------------
+ 
+ Statistic of Genomic Matrix
+                                N      Mean       Min       Max       Var
+     Diagonal                  26     1.000     0.338     2.284     0.306
+     Off-diagonal             650     0.030    -0.883     1.803     0.257
+ 
+
+ Correlation of Genomic Inbreeding and Pedigree Inbreeding
+     Correlation:     0.0000
+ 
+ Diagonal elements
+    Estimating Regression Coefficients G = b0 11' + b1 A + e
+    Regression coefficients b0 b1 =   Infinity -Infinity
+
+    Correlation diagonal elements G & A -Infinity
+ 
+ All elements - Diagonal / Off-Diagonal
+    Estimating Regression Coefficients G = b0 11' + b1 A + e
+    Regression coefficients b0 b1 =     -0.021     1.316
+
+    Correlation all elements G & A     0.531
+ 
+ Off-Diagonal
+    Using 42 elements from A22 >= .02000
+
+    Estimating Regression Coefficients G = b0 11' + b1 A + e
+    Regression coefficients b0 b1 =      1.460    -0.947
+
+    Correlation Off-Diagonal elements G & A    -0.168
+ 
+ ***********************************************************************
+ * CORRELATION FOR OFF-DIAGONALS G & A22 IS LOW THAN  0.50  !!!!!  *
+ * MISIDENTIFIED GENOMIC SAMPLES OR POOR QUALITY GENOMIC DATA *
+ ***********************************************************************
+
+ Creating A22-inverse 
+    Inverse LAPACK MKL dpotrf/i  #threads=    1    4 Elapsed omp_get_time:     0.0003
+
+ ----------------------
+  Final A22 Inv Matrix 
+ ----------------------
+ 
+ Statistic of Inv. Rel. Matrix A22
+                                N      Mean       Min       Max       Var
+     Diagonal                  26     1.692     1.000     2.000     0.102
+     Off-diagonal             650    -0.042    -1.000     0.500     0.061
+ 
+ 
+ Creating G-inverse 
+    Inverse LAPACK MKL dpotrf/i  #threads=    1    4 Elapsed omp_get_time:     0.0001
+
+ --------------------------
+  Final Genomic Inv Matrix 
+ --------------------------
+ 
+ Statistic of Inv. Genomic Matrix
+                                N      Mean       Min       Max       Var
+     Diagonal                  26    25.867     2.296    40.000   109.252
+     Off-diagonal             650    -1.012   -20.112     8.217    18.764
+ 
+
+ Check for diagonal of Inverse Genomic - Inverse of pedigree relationship matrix
+
+
+ ------------------------------
+  Final G Inv - A22 Inv Matrix 
+ ------------------------------
+ 
+ Statistic of Inv. Genomic - A22 Matrix
+                                N      Mean       Min       Max       Var
+     Diagonal                  26    24.174     0.796    38.000   104.264
+     Off-diagonal             650    -0.970   -19.112     8.217    16.933
+ 
+
+*--------------------------------------------------*
+* Setup Genomic Done !!!, elapsed time:      0.028 *
+*--------------------------------------------------*
+
+
+finished peds (BLUP) in 32.05 s,  40455 nonzeroes
+
+round =     1  convergence =  0.1148E-05
+round =     2  convergence =  0.2706E-06
+round =     3  convergence =  0.1301E-05
+round =     4  convergence =  0.1069E-04
+round =     5  convergence =  0.3729E-05
+round =     6  convergence =  0.7132E-07
+round =     7  convergence =  0.4701E-08
+round =     8  convergence =  0.2771E-09
+round =     9  convergence =  0.1852E-08
+round =    10  convergence =  0.2817E-08
+round =    11  convergence =  0.5224E-10
+round =    12  convergence =  0.5723E-10
+round =    13  convergence =  0.3937E-09
+round =    14  convergence =  0.8615E-10
+round =    15  convergence =  0.8667E-11
+round =    16  convergence =  0.8725E-11
+round =    17  convergence =  0.1075E-10
+round =    18  convergence =  0.9406E-10
+round =    19  convergence =  0.1358E-07
+round =    20  convergence =  0.1607E-08
+round =    21  convergence =  0.8534E-11
+round =    22  convergence =  0.6415E-11
+round =    23  convergence =  0.5194E-09
+round =    24  convergence =  0.1304E-08
+round =    25  convergence =  0.3766E-11
+round =    26  convergence =  0.1657E-11
+round =    27  convergence =  0.7244E-12
+   27 iterations,   convergence criterion= 0.7244E-12
+ solutions stored in file: solutions
+ *** Statistical Method: BLUP                
+ * FINISHED (BLUPF90): 03-30-2026  09h 08m 38s 960
+

@@ -1,0 +1,11 @@
+ID_Animal;Fazenda;Estacao;Lote_Manejo;Regime_Alim;Tipo_Pastagem;Localidade_Bloco;Data_Coleta_Pesagem;Piquete;confiabilidade_dados%;itu_media;itu_dp;itu_max;itu_min;itu_leituras_criticas
+1;1;Verão;Confinamento;Confinamento;Dieta Total;Setor_1A;2024-03-22;2;114.3;75.37;6.82;87.31;57.61;133
+2;1;Verão;Pasto 10;Pasto;Panicum;Setor_1A;2024-02-26;38;114.3;77.56;5.64;86.99;66.56;145
+3;1;Outono;Pasto 11;Pasto;Braquiária;Setor_1A;2024-06-11;41;114.3;68.62;5.72;78.72;56.02;72
+4;1;Verão;Pasto 10;Pasto;Mombaça;Setor_1A;2024-03-14;39;114.3;77.74;5.64;87.73;66.23;150
+5;1;Verão;Confinamento;Confinamento;Dieta Total;Setor_1A;2024-02-05;1;114.3;77.59;5.74;88.79;65.71;144
+6;1;Verão;Pasto 10;Pasto;Braquiária;Setor_1C;2024-02-13;40;114.3;77.6;5.9;87.38;65.12;151
+7;1;Outono;Pasto 15;Pasto;Braquiária;Setor_1C;2024-04-25;43;114.3;68.33;5.71;77.29;56.85;70
+8;1;Verão;Pasto 08;Pasto;Braquiária;Setor_1A;2024-03-16;37;114.3;77.91;5.59;88.44;67.07;151
+9;1;Outono;Pasto 11;Pasto;Mombaça;Setor_1C;2024-04-28;42;114.3;68.3;5.78;78.06;55.79;66
+10;1;Verão;Pasto 10;Pasto;Braquiária;Setor_1A;2024-01-10;38;114.3;77.57;5.56;87.88;65.31;148

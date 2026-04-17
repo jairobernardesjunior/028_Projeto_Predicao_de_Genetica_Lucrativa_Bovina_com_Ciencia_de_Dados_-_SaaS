@@ -1,0 +1,11 @@
+ID_Animal;Fazenda;Estacao;Lote_Manejo;Regime_Alim;Tipo_Pastagem;Localidade_Bloco;Data_Coleta_Pesagem;Piquete
+1;1;Verão;Confinamento;Confinamento;Dieta Total;Setor_1A;2024-03-22;2
+2;1;Verão;Pasto 10;Pasto;Panicum;Setor_1A;2024-02-26;38
+3;1;Outono;Pasto 11;Pasto;Braquiária;Setor_1A;2024-06-11;41
+4;1;Verão;Pasto 10;Pasto;Mombaça;Setor_1A;2024-03-14;39
+5;1;Verão;Confinamento;Confinamento;Dieta Total;Setor_1A;2024-02-05;1
+6;1;Verão;Pasto 10;Pasto;Braquiária;Setor_1C;2024-02-13;40
+7;1;Outono;Pasto 15;Pasto;Braquiária;Setor_1C;2024-04-25;43
+8;1;Verão;Pasto 08;Pasto;Braquiária;Setor_1A;2024-03-16;37
+9;1;Outono;Pasto 11;Pasto;Mombaça;Setor_1C;2024-04-28;42
+10;1;Verão;Pasto 10;Pasto;Braquiária;Setor_1A;2024-01-10;38

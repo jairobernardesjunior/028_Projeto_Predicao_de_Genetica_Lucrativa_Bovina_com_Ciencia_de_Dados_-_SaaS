@@ -1,0 +1,27 @@
+ID_Animal;ID_Pai;ID_Mae;Sexo;Geracao;Raca;Data_Nascimento;Categoria
+1;3012;4055;M;1;Nelore;2020-01-01;Animal Avaliado
+2;3005;4210;M;1;Nelore;2020-01-01;Animal Avaliado
+3;3044;4102;M;1;Nelore;2020-01-01;Animal Avaliado
+4;3021;4480;M;1;Nelore;2020-01-01;Animal Avaliado
+5;3012;4315;M;1;Nelore;2020-01-01;Animal Avaliado
+6;3008;4022;M;1;Nelore;2020-01-01;Animal Avaliado
+7;3033;4198;M;1;Nelore;2020-01-01;Animal Avaliado
+8;3021;4256;M;1;Nelore;2020-01-01;Animal Avaliado
+9;3044;4001;M;1;Nelore;2020-01-01;Animal Avaliado
+10;3005;4333;M;1;Nelore;2020-01-01;Animal Avaliado
+3005;0;0;M;0;Nelore;2020-01-01;Touro Fundador
+3008;0;0;M;0;Nelore;2020-01-01;Touro Fundador
+3012;0;0;M;0;Nelore;2020-01-01;Touro Fundador
+3021;0;0;M;0;Nelore;2020-01-01;Touro Fundador
+3033;0;0;M;0;Nelore;2020-01-01;Touro Fundador
+3044;0;0;M;0;Nelore;2020-01-01;Touro Fundador
+4001;0;0;F;0;Nelore;2020-01-01;Matriz Fundadora
+4022;0;0;F;0;Nelore;2020-01-01;Matriz Fundadora
+4055;0;0;F;0;Nelore;2020-01-01;Matriz Fundadora
+4102;0;0;F;0;Nelore;2020-01-01;Matriz Fundadora
+4198;0;0;F;0;Nelore;2020-01-01;Matriz Fundadora
+4210;0;0;F;0;Nelore;2020-01-01;Matriz Fundadora
+4256;0;0;F;0;Nelore;2020-01-01;Matriz Fundadora
+4315;0;0;F;0;Nelore;2020-01-01;Matriz Fundadora
+4333;0;0;F;0;Nelore;2020-01-01;Matriz Fundadora
+4480;0;0;F;0;Nelore;2020-01-01;Matriz Fundadora

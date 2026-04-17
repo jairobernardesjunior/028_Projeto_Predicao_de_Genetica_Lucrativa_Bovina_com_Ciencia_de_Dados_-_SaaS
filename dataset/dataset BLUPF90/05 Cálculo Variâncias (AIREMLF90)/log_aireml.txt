@@ -1,0 +1,84 @@
+ name of parameter file?
+renf90_linear.par
+     BLUPF90+ ver. 2.72
+
+ Parameter file:             renf90_linear.par
+ Data file:                  renf90_linear.dat
+ Number of Traits            10
+ Number of Effects           17
+ Position of Observations      1  2  3  4  5  6  7  8  9 10
+ Position of Weights           0  0  0  0  0  0  0  0  0  0
+ Value of Missing Trait/Observation           0
+
+EFFECTS
+ #  type                position (2)        levels   [positions for nested]
+    1  cross-classified      11   11   11   11   11   11   11   11   11   11         6
+    2  cross-classified      12   12   12   12   12   12   12   12   12   12         1
+    3  cross-classified      13   13   13   13   13   13   13   13   13   13         2
+    4  cross-classified      14   14   14   14   14   14   14   14   14   14         5
+    5  cross-classified      15   15   15   15   15   15   15   15   15   15         2
+    6  cross-classified      16   16   16   16   16   16   16   16   16   16         4
+    7  cross-classified      17   17   17   17   17   17   17   17   17   17         2
+    8  cross-classified      18   18   18   18   18   18   18   18   18   18         9
+    9  cross-classified      19   19   19   19   19   19   19   19   19   19         1
+   10  cross-classified      20   20   20   20   20   20   20   20   20   20         1
+   11  cross-classified      21   21   21   21   21   21   21   21   21   21         1
+   12  covariable            22   22   22   22   22   22   22   22   22   22         1
+   13  covariable            23   23   23   23   23   23   23   23   23   23         1
+   14  covariable            24   24   24   24   24   24   24   24   24   24         1
+   15  covariable            25   25   25   25   25   25   25   25   25   25         1
+   16  covariable            26   26   26   26   26   26   26   26   26   26         1
+   17  cross-classified      27   27   27   27   27   27   27   27   27   27        27
+
+ Residual (co)variance Matrix
+  1.0000      0.0000      0.0000      0.0000      0.0000      0.0000      0.0000      0.0000      0.0000      0.0000    
+  0.0000      1.0000      0.0000      0.0000      0.0000      0.0000      0.0000      0.0000      0.0000      0.0000    
+  0.0000      0.0000      1.0000      0.0000      0.0000      0.0000      0.0000      0.0000      0.0000      0.0000    
+  0.0000      0.0000      0.0000      1.0000      0.0000      0.0000      0.0000      0.0000      0.0000      0.0000    
+  0.0000      0.0000      0.0000      0.0000      1.0000      0.0000      0.0000      0.0000      0.0000      0.0000    
+  0.0000      0.0000      0.0000      0.0000      0.0000      1.0000      0.0000      0.0000      0.0000      0.0000    
+  0.0000      0.0000      0.0000      0.0000      0.0000      0.0000      1.0000      0.0000      0.0000      0.0000    
+  0.0000      0.0000      0.0000      0.0000      0.0000      0.0000      0.0000      1.0000      0.0000      0.0000    
+  0.0000      0.0000      0.0000      0.0000      0.0000      0.0000      0.0000      0.0000      1.0000      0.0000    
+  0.0000      0.0000      0.0000      0.0000      0.0000      0.0000      0.0000      0.0000      0.0000      1.0000    
+
+ Random Effect(s)   17
+ Type of Random Effect:      additive animal with unknown parent groups and inbreeding
+ Pedigree File:              renadd_linear17.ped                                                                                                                                                                                                                                       
+ trait   effect    (CO)VARIANCES
+  1      17     1.000      0.1000      0.1000      0.1000      0.1000      0.1000      0.1000      0.1000      0.1000      0.1000    
+  2      17    0.1000       1.000      0.1000      0.1000      0.1000      0.1000      0.1000      0.1000      0.1000      0.1000    
+  3      17    0.1000      0.1000       1.000      0.1000      0.1000      0.1000      0.1000      0.1000      0.1000      0.1000    
+  4      17    0.1000      0.1000      0.1000       1.000      0.1000      0.1000      0.1000      0.1000      0.1000      0.1000    
+  5      17    0.1000      0.1000      0.1000      0.1000       1.000      0.1000      0.1000      0.1000      0.1000      0.1000    
+  6      17    0.1000      0.1000      0.1000      0.1000      0.1000       1.000      0.1000      0.1000      0.1000      0.1000    
+  7      17    0.1000      0.1000      0.1000      0.1000      0.1000      0.1000       1.000      0.1000      0.1000      0.1000    
+  8      17    0.1000      0.1000      0.1000      0.1000      0.1000      0.1000      0.1000       1.000      0.1000      0.1000    
+  9      17    0.1000      0.1000      0.1000      0.1000      0.1000      0.1000      0.1000      0.1000       1.000      0.1000    
+ 10      17    0.1000      0.1000      0.1000      0.1000      0.1000      0.1000      0.1000      0.1000      0.1000       1.000    
+
+ REMARKS
+  (1) Weight position 0 means no weights utilized
+  (2) Effect positions of 0 for some effects and traits means that such
+      effects are missing for specified traits
+ 
+
+ * The limited number of OpenMP threads = 4
+
+ * BLUPF90+ sparse operations version
+ 
+ * START JOB (BLUPF90): 03-30-2026  08h 58m 18s 243
+ 
+ *** Statistical method from OPTION aireml              
+ * missing observation (default=0):        -999
+ 
+
+ Options read from parameter file for genomic
+ * SNP format: BLUPF90 standard (text)
+ * SNP file: genotipos_raw.txt
+ * SNP Xref file: genotipos_raw.txt_XrefID
+ * Set the threshold to Stop the analysis if low cor(A22,G) (default 0.3): -1.0
+ IJA4 version
+ Data record length =           27
+ !!! Wrong option: choose BLUP or VCE !!!
+
