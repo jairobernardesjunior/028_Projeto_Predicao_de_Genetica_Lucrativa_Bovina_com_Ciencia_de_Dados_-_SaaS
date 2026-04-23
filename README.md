@@ -1,4 +1,4 @@
-## Projeto_IA_na_Predição_de_Genética_Lucrativa_Bovina_com_Ciência_de_Dados_e_SaaS
+## Projeto_Predição_de_Genética_Lucrativa_Bovina_com_Ciência_de_Dados_e_SaaS
 
 Este projeto detalha a implementação de uma solução tecnológica voltada à Predição de Genética Lucrativa Bovina, estruturada sob o rigor da Ciência de Dados e do desenvolvimento de produtos digitais. O objetivo central é converter métricas estatísticas em rentabilidade para o pecuarista através de uma arquitetura escalável.
 
@@ -18,4 +18,4 @@ Governança e MLOps: Estabelece-se o monitoramento contínuo do ciclo de vida do
 
 Estratégia de Mercado: O projeto finaliza com modelos de monetização por volume de dados e o posicionamento da tecnologia como suporte científico para o lucro direto no campo.
 
-![Imagem](https://github.com/jairobernardesjunior/027_Projeto_GenAI_Model_consumption_of_inputs_for_soybeans/blob/main/capa_livro.jpg)
+![Imagem](https://github.com/jairobernardesjunior/028_Projeto_Predicao_de_Genetica_Lucrativa_Bovina_com_Ciencia_de_Dados_-_SaaS/blob/main/capa_laranja.png)
