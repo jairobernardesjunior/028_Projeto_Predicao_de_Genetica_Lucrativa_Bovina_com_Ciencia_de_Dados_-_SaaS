@@ -71,7 +71,7 @@ def render_prediction_module():
             f_zip = st.file_uploader("1. Pacote de Variâncias (.zip)", type="zip", help="O arquivo .zip baixado na Fase 2.")
             
     with c2: 
-        f_exe = st.file_uploader("2. Executável Unificado (blupf90+.exe)", help="O mesmo motor utilizado na Fase 2.")
+        f_exe = st.file_uploader("2. Executável Unificado (blupf90+.exe - https://nce.ads.uga.edu/html/projects/programs/Windows/64bit/)", help="O mesmo motor utilizado na Fase 2.")
         
     c3, c4 = st.columns(2)
     with c3: 

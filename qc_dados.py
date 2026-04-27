@@ -379,7 +379,7 @@ def render_qc_module():
         st.divider()
         st.subheader("🚀 3. Arquivo Executável do Motor (Fortran)")
         col_exe, col_btn = st.columns([3, 1])
-        with col_exe: f_exe = st.file_uploader("Executável (preGSf90.exe)", key="qc_exe")
+        with col_exe: f_exe = st.file_uploader("Executável (preGSf90.exe) - https://nce.ads.uga.edu/html/projects/programs/Windows/64bit/", key="qc_exe")
         with col_btn:
             st.write(""); st.write("")
             btn_run = st.button("🚀 INICIAR AUDITORIA", use_container_width=True, type="primary")

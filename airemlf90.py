@@ -69,7 +69,7 @@ def render_variance_module():
             f_zip = st.file_uploader("Upload do Pacote RENUMF90 (.zip)", type="zip", help="O arquivo .zip baixado na Fase 1.", key="var_zip")
             
     with c2: 
-        f_exe = st.file_uploader("Executável Unificado (blupf90+.exe)", help="Motor central que contém o AIREML e o GIBBS.")
+        f_exe = st.file_uploader("Executável Unificado (blupf90+.exe - https://nce.ads.uga.edu/html/projects/programs/Windows/64bit/)", help="Motor central que contém o AIREML e o GIBBS.")
         
     with c3: 
         f_dlls = st.file_uploader("DLLs de Suporte (Segure Ctrl para várias)", accept_multiple_files=True)

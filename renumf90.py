@@ -216,7 +216,7 @@ def render_renumf90_module():
             
             col_exe, col_dll = st.columns(2)
             with col_exe:
-                f_exe = st.file_uploader("Executável (renumf90.exe)", key="renum_exe")
+                f_exe = st.file_uploader("Executável (renumf90.exe - https://nce.ads.uga.edu/html/projects/programs/Windows/64bit/)", key="renum_exe")
                 
             with col_dll:
                 f_dlls = st.file_uploader(
