@@ -8,7 +8,7 @@ Inteligência de Negócio e Viabilidade: O foco inicial é a criação de um ín
 
 Engenharia e Qualidade de Dados: Implementa-se uma infraestrutura para curadoria de dados fenotípicos, removendo anomalias e padronizando grupos contemporâneos. O pipeline inclui o tratamento de genealogias inconsistentes e o controle de qualidade de marcadores SNP.
 
-Modelagem Estatística de Alta Performance: Utiliza-se o motor ssGBLUP via BLUPF90 para integrar informações de pedigree e genômica em uma matriz única. Este processamento permite o cálculo de valores genéticos aditivos (GEBVs) com precisão elevada.
+Modelagem Estatística de Alta Performance: Utiliza-se o motor ssGBLUP (MISZTAL et al., 2014) via BLUPF90 (MASUDA, 2025) para integrar informações de pedigree e genômica em uma matriz única. Este processamento permite o cálculo de valores genéticos aditivos (GEBVs) com precisão elevada.
 
 Aceleração com Machine Learning: Aplica-se algoritmos como XGBoost e Redes Neurais para prever a confiabilidade das predições e o impacto de variáveis externas sobre os resultados genéticos.
 
@@ -17,5 +17,11 @@ Arquitetura de Produto (SaaS): A solução é operacionalizada em nuvem através
 Governança e MLOps: Estabelece-se o monitoramento contínuo do ciclo de vida do modelo, identificando o desvio genético (genomic drift) entre gerações para determinar a necessidade de novos treinamentos.
 
 Estratégia de Mercado: O projeto finaliza com modelos de monetização por volume de dados e o posicionamento da tecnologia como suporte científico para o lucro direto no campo.
+
+
+MASUDA, Y. Introduction to BLUPF90 suite programs. Standard Edition (Ver 1.1.0). Athens: University of Georgia, 2025. Disponível em: https://nce.ads.uga.edu/wiki/lib/exe/fetch.php?media=tutorial_blupf90.pdf Acesso em: 14 abr. 2026.
+
+MISZTAL, I. et al. Manual for BLUPF90 family of programs. Athens: University of Georgia, 2014. Disponível em: https://nce.ads.uga.edu/wiki/lib/exe/fetch.php?media=blupf90_all.pdf Acesso em: 14 abr. 2026.
+
 
 ![Imagem](https://github.com/jairobernardesjunior/028_Projeto_Predicao_de_Genetica_Lucrativa_Bovina_com_Ciencia_de_Dados_-_SaaS/blob/main/capa_laranja.png)
