@@ -17,6 +17,7 @@ class ProcessadorQC_PreGS:
     def __init__(self):
         self.logs = []
         self.registros_excluidos = []
+        self.erro_detalhado = None  # Atributo para guardar o output do Fortran em caso de crash
 
     def log(self, mensagem, nivel="INFO"):
         self.logs.append(f"[{nivel}] {mensagem}")
@@ -32,10 +33,12 @@ class ProcessadorQC_PreGS:
             "Ação Recomendada (Feedback)": acao_recomendada
         })
 
-    def executar_pregsf90(self, df_gen, df_ped, maf, cr_snp, cr_anim, f_exe, hwe_val=0, progress_bar=None, status_text=None):
+    def executar_pregsf90(self, df_gen, df_ped, maf, cr_snp, cr_anim, f_exe, f_dlls=None, hwe_val=0, progress_bar=None, status_text=None):
         """
         Orquestra a conversão de dados, execução do preGSf90 e coleta dos resultados.
         """
+        self.erro_detalhado = None # Reseta o erro a cada nova execução
+        
         with tempfile.TemporaryDirectory() as tmpdir:
             self.log(f"Diretório temporário criado: {tmpdir}")
             
@@ -54,11 +57,9 @@ class ProcessadorQC_PreGS:
             # =========================================================================
             # 1. PRÉ-FILTROS DE ENGENHARIA (PYTHON) E PROTEÇÃO DO ID "0"
             # =========================================================================
-            # Remove linhas corrompidas onde o ID do animal é nulo, vazio ou "0" (0 é reservado para pais desconhecidos)
             df_gen = df_gen[df_gen[id_col_gen].notna() & (df_gen[id_col_gen].astype(str).str.strip() != '') & (df_gen[id_col_gen].astype(str).str.strip() != '0')]
             df_ped = df_ped[df_ped[id_col_ped].notna() & (df_ped[id_col_ped].astype(str).str.strip() != '') & (df_ped[id_col_ped].astype(str).str.strip() != '0')]
 
-            # Interseção: Verifica animais com DNA, mas sem cadastro na genealogia (Órfãos de Pedigree)
             gen_ids = set(df_gen[id_col_gen].astype(str).str.strip())
             ped_ids = set(df_ped[id_col_ped].astype(str).str.strip())
             
@@ -70,7 +71,6 @@ class ProcessadorQC_PreGS:
                         "Amostra de laboratório processada, mas o animal não existe no sistema da fazenda.", 
                         "Laboratório: Verificar se houve erro de digitação no ID da amostra. Fazenda: Verificar se o animal deixou de ser cadastrado no Pedigree."
                     )
-                # Poda os órfãos do dataframe de genótipos para poupar o Fortran
                 df_gen = df_gen[~df_gen[id_col_gen].astype(str).str.strip().isin(orfaos)]
                 self.log(f"Removidos {len(orfaos)} genótipos órfãos (sem pedigree correspondente).")
 
@@ -87,7 +87,6 @@ class ProcessadorQC_PreGS:
             for c in ped_cols:
                 unique_ids.update(df_ped[c].astype(str).str.strip().tolist())
 
-            # O valor '0' é explicitamente mantido como '0' para indicar pais desconhecidos.
             for null_val in ['0', 'nan', 'None', '', '5']:
                 unique_ids.discard(null_val)
 
@@ -97,7 +96,6 @@ class ProcessadorQC_PreGS:
                 id_to_int[uid] = str(i)
                 int_to_id[str(i)] = uid
 
-            # Prepara o Pedigree
             try:
                 df_ped_clean = df_ped[ped_cols].fillna('0').astype(str)
                 for c in ped_cols:
@@ -109,10 +107,10 @@ class ProcessadorQC_PreGS:
                     
                 df_ped_mapped.to_csv(ped_path, sep=" ", index=False, header=False)
             except Exception as e:
+                self.erro_detalhado = f"Erro na etapa de Parse do Pedigree no Python:\n{str(e)}"
                 self.log(f"Erro ao preparar Pedigree: {str(e)}", "ERRO")
-                return None, None
+                return None
 
-            # Prepara Genótipos e XrefID
             try:
                 marker_cols = df_gen.columns[1:]
                 if len(marker_cols) == 1:
@@ -131,10 +129,10 @@ class ProcessadorQC_PreGS:
                         f_gen_out.write(f"{mapped_id:<15} {g_str}\n")
                         f_xref_out.write(f"{mapped_id} {mapped_id}\n")
             except Exception as e:
+                self.erro_detalhado = f"Erro na etapa de Parse do Genótipo no Python:\n{str(e)}"
                 self.log(f"Erro ao preparar Genótipos/XrefID: {str(e)}", "ERRO")
-                return None, None
+                return None
 
-            # Cria arquivo Dummy
             primeiro_id_valido = df_ped_mapped.iloc[0, 0]
             with open(dummy_path, "w") as f:
                 f.write(f"{primeiro_id_valido} 1.0\n")
@@ -174,31 +172,50 @@ OPTION callrateAnim {cr_anim}{str_hwe}
             with open(par_path, "w") as f:
                 f.write(par_content)
 
-            # Salva o executável e roda o Fortran
             try:
                 exe_filename = f_exe.name.strip()
                 exe_dest = os.path.join(tmpdir, exe_filename)
                 with open(exe_dest, "wb") as f: 
                     f.write(f_exe.getbuffer())
                 if platform.system() != "Windows": os.chmod(exe_dest, 0o755)
+
+                if f_dlls:
+                    for dll in f_dlls:
+                        with open(os.path.join(tmpdir, dll.name.strip()), "wb") as f:
+                            f.write(dll.getbuffer())
+
             except Exception as e:
-                self.log(f"Erro ao salvar o executável: {str(e)}", "ERRO")
-                return None, None
+                self.erro_detalhado = f"Erro ao manipular arquivo executável ou DLLs:\n{str(e)}"
+                self.log(f"Erro ao salvar o executável/DLLs: {str(e)}", "ERRO")
+                return None
 
             if status_text: status_text.text("Passo 3/4: Executando motor Fortran (preGSf90)... Isso pode levar alguns minutos.")
             if progress_bar: progress_bar.progress(50)
 
             self.log(f"Iniciando motor {exe_filename}...")
+            
+            # =========================================================================
+            # EXECUÇÃO DO SUBPROCESS
+            # =========================================================================
             try:
                 cmd_exe = f".\\{exe_filename}" if platform.system() == "Windows" else f"./{exe_filename}"
                 process = subprocess.run([cmd_exe, "pregsf90.par"], cwd=tmpdir, input="\n\n\n\n\n", capture_output=True, text=True, timeout=90, check=True)
                 self.log(f"Processamento concluído. Saída: {process.stdout[:500]}...")
+                
             except subprocess.TimeoutExpired as e:
+                self.erro_detalhado = f"TIMEOUT EXCEDIDO (90s).\n\n[STDOUT - Últimas Saídas]:\n{e.stdout}\n\n[STDERR]:\n{e.stderr}"
                 self.log(f"TIMEOUT: {e.stdout}", "ERRO")
-                return None, None
+                return None
+                
             except subprocess.CalledProcessError as e:
+                self.erro_detalhado = f"CÓDIGO DE ERRO (Exit Status): {e.returncode}\n\n[STDERR - Falha Crítica]:\n{e.stderr}\n\n[STDOUT - Últimas Saídas do Motor antes de quebrar]:\n{e.stdout}"
                 self.log(f"Erro do preGSf90. STDERR: {e.stderr}", "ERRO")
-                return None, None
+                return None
+                
+            except Exception as e:
+                self.erro_detalhado = f"ERRO INESPERADO DO SISTEMA (Subprocess):\n{str(e)}"
+                self.log(f"Erro genérico de SO: {str(e)}", "ERRO")
+                return None
 
             if status_text: status_text.text("Passo 4/4: Resgatando matrizes limpas geradas pelo Fortran...")
             if progress_bar: progress_bar.progress(80)
@@ -285,7 +302,6 @@ def render_qc_module():
         
         col_g1, col_g2 = st.columns(2)
         
-        # Gráfico 1: Barras - Retenção de Animais
         with col_g1:
             fig_bar, ax_bar = plt.subplots(figsize=(6, 4))
             categorias = ['Recebidas', 'Úteis\n(Com Pedigree)', 'Aprovadas\n(Pós-Fortran)']
@@ -298,7 +314,6 @@ def render_qc_module():
             sns.despine()
             st.pyplot(fig_bar)
 
-        # Gráfico 2: Pizza - Motivos de Exclusão
         with col_g2:
             if not df_excluidos.empty:
                 fig_pie, ax_pie = plt.subplots(figsize=(6, 4))
@@ -327,7 +342,6 @@ def render_qc_module():
     if not st.session_state.qc_processado:
         st.subheader("📂 1. Upload dos Dados Tratados")
         
-        # --- NOVO: Integração com Workspace da Etapa 2 ---
         workspace_dir = st.session_state.get('workspace_dir')
         caminho_gen_auto = os.path.join(workspace_dir, "genotipos_tratado.csv") if workspace_dir else None
         caminho_ped_auto = os.path.join(workspace_dir, "pedigree_tratado.csv") if workspace_dir else None
@@ -360,39 +374,37 @@ def render_qc_module():
         with col_p1:
             st.markdown("**(A) Frequência do Marcador:**")
             maf = st.number_input("MAF (minfreq)", value=0.05, min_value=0.0, max_value=0.5, step=0.01)
-            st.caption("Frequência de Alelos Raros. Ex: 0.05 apaga qualquer marcador (coluna de DNA) onde a variação apareça em menos de 5% do rebanho, pois se quase 100% dos animais têm a mesma letra, o marcador não gera comparação estatística útil.")
             
         with col_p2:
             st.markdown("**(B) Qualidade da Leitura:**")
             cr_snp = st.number_input("Call Rate SNP (callrate)", value=0.90, min_value=0.0, max_value=1.0, step=0.01)
-            st.caption("Qualidade do Marcador. Avalia a consistência do chip laboratorial. Ex: 0.90 exclui o marcador genético se o chip falhou/veio em branco em mais de 10% de todos os animais testados.")
 
         with col_p3:
             st.markdown("**(C) Qualidade da Amostra:**")
             cr_anim = st.number_input("Call Rate Animal (callrateAnim)", value=0.90, min_value=0.0, max_value=1.0, step=0.01)
-            st.caption("Qualidade da Amostra Física do Animal (Pelo/Sangue). Ex: 0.90 exige que pelo menos 90% do exame esteja preenchido. Se a amostra tiver mais de 10% de 'buracos', o animal inteiro é reprovado da avaliação.")
 
         st.markdown("**(D) Filtros de Equilíbrio Populacional (Opcional):**")
         hwe_val = st.number_input("HWE (Equilíbrio de Hardy-Weinberg)", value=0.0, min_value=0.0, max_value=1.0, step=0.001, format="%.3f")
-        st.caption("Valor 0 desativa o filtro. Se ativado (ex: 0.001), filtra SNPs com desvio drástico do equilíbrio populacional. Desvios severos desse equilíbrio geralmente não são fruto de seleção animal extrema, mas sim de erros técnicos graves de leitura durante a genotipagem no laboratório.")
 
         st.divider()
         st.subheader("🚀 3. Arquivo Executável do Motor (Fortran)")
-        col_exe, col_btn = st.columns([3, 1])
-        with col_exe: f_exe = st.file_uploader("Executável (preGSf90.exe) - https://nce.ads.uga.edu/html/projects/programs/Windows/64bit/", key="qc_exe")
-        with col_btn:
-            st.write(""); st.write("")
-            btn_run = st.button("🚀 INICIAR AUDITORIA", use_container_width=True, type="primary")
+        
+        col_exe, col_dll = st.columns(2)
+        with col_exe: 
+            f_exe = st.file_uploader("Executável (preGSf90.exe) - https://nce.ads.uga.edu/html/projects/programs/Windows/64bit/", key="qc_exe")
+        with col_dll:
+            f_dlls = st.file_uploader("DLLs de Suporte (Segure Ctrl para selecionar várias)", accept_multiple_files=True, key="qc_dlls")
+        
+        st.write("")
+        btn_run = st.button("🚀 INICIAR AUDITORIA", use_container_width=True, type="primary")
 
         if btn_run and gen_input and ped_input and f_exe:
             inicio_str = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
             st.info(f"⏳ Inicializando o processo de auditoria...")
             
-            # --- ELEMENTOS VISUAIS DE PROGRESSO ---
             progress_bar = st.progress(0)
             status_text = st.empty()
             
-            # Reseta ponteiros caso venham do uploader (memória RAM)
             if hasattr(gen_input, 'seek'): gen_input.seek(0)
             if hasattr(ped_input, 'seek'): ped_input.seek(0)
             
@@ -404,8 +416,7 @@ def render_qc_module():
             
             processador = ProcessadorQC_PreGS()
             
-            # Interseção e Execução com tracking de progresso
-            result = processador.executar_pregsf90(df_gen, df_ped, maf, cr_snp, cr_anim, f_exe, hwe_val, progress_bar, status_text)
+            result = processador.executar_pregsf90(df_gen, df_ped, maf, cr_snp, cr_anim, f_exe, f_dlls, hwe_val, progress_bar, status_text)
             
             if result:
                 status_text.text("Passo 4/4 (Final): Decodificando IDs, processando relatórios e montando matrizes finais...")
@@ -415,7 +426,6 @@ def render_qc_module():
                 df_gen_clean, df_ped_clean = None, None
                 id_col_name = df_gen.columns[0]
                 
-                # Resgate das amostras enviadas (Descontando as órfãs já removidas pelo Python)
                 animais_enviados_fortran = set(df_gen[df_gen[id_col_name].notna() & (~df_gen[id_col_name].astype(str).str.strip().isin(['', '0']))][id_col_name].astype(str).str.strip())
                 
                 for fname, conteudo in arquivos_limpos.items():
@@ -450,7 +460,6 @@ def render_qc_module():
 
                 if df_ped_clean is None: df_ped_clean = df_ped.copy()
                     
-                # Identifica quem sumiu do genótipo DENTRO do Fortran (Falta de Call Rate)
                 animais_cortados = 0
                 if df_gen_clean is not None:
                     animais_gen_depois = set(df_gen_clean[df_gen_clean.columns[0]].astype(str).str.strip())
@@ -467,7 +476,6 @@ def render_qc_module():
                 else:
                     snps_excluidos = 0
 
-                # --- NOVO: SALVAMENTO FÍSICO NO WORKSPACE ---
                 if workspace_dir and os.path.exists(workspace_dir):
                     if df_gen_clean is not None:
                         df_gen_clean.to_csv(os.path.join(workspace_dir, "genotipos_qc_final.csv"), sep=';', index=False)
@@ -496,8 +504,16 @@ def render_qc_module():
                 progress_bar.empty()
                 status_text.empty()
                 st.error("❌ Erro Crítico: O motor Fortran travou ou os dados são incompatíveis.")
+                
+                if processador.erro_detalhado:
+                    st.warning("⚠️ **Detalhes Técnicos do Motor (Output do Terminal Fortran):**")
+                    st.code(processador.erro_detalhado, language="bash")
+                else:
+                    logs_erro = [l for l in processador.logs if "[ERRO]" in l]
+                    if logs_erro:
+                        st.warning("⚠️ **Detalhes do Erro (Python/Engenharia):**")
+                        st.code(logs_erro[-1], language="bash")
 
-    # Tela de Resultados / Exportação
     if st.session_state.qc_processado:
         res = st.session_state.qc_processado
         st.divider()
@@ -512,11 +528,12 @@ def render_qc_module():
         csv_gen = converter_df_csv(res.get('genotipos_qc'))
         csv_ped = converter_df_csv(res.get('pedigree_qc'))
         
+        # NOVO: Adicionado type="primary" e emojis para destaque visual nos botões de exportação
         if csv_gen:
-            cols_down[0].download_button(label="Baixar Genótipos (DNA Blindado)", data=csv_gen, file_name="genotipos_qc_final.csv", mime="text/csv", use_container_width=True)
+            cols_down[0].download_button(label="🧬 Baixar Genótipos (DNA Blindado)", data=csv_gen, file_name="genotipos_qc_final.csv", mime="text/csv", use_container_width=True, type="primary")
         if csv_ped:
-            cols_down[1].download_button(label="Baixar Pedigree (Árvore Ajustada)", data=csv_ped, file_name="pedigree_qc_final.csv", mime="text/csv", use_container_width=True)
+            cols_down[1].download_button(label="🌳 Baixar Pedigree (Árvore Ajustada)", data=csv_ped, file_name="pedigree_qc_final.csv", mime="text/csv", use_container_width=True, type="primary")
 
         st.divider()
-        with st.expander("Expandir para visualizar a execução interna e Logs do Fortran", expanded=False):
-            st.text_area("", "\n".join(res['logs']), height=400)
+        with st.expander("Expandir para visualizar a execução interna e Logs", expanded=False):
+            st.text_area("Log de Processamento", "\n".join(res['logs']), height=400)
