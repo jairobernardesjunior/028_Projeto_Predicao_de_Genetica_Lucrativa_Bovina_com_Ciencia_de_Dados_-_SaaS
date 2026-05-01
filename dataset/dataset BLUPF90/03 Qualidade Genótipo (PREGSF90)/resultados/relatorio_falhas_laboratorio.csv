@@ -1,0 +1,2 @@
+ID_Animal;Tabela de Origem;Filtro / Motivo (Técnico);Explicação Simples;Ação Recomendada (Feedback)
+5;Genótipo;Call Rate Animal < 0.9;Amostra de laboratório muito falha (dados em branco). O animal foi reprovado por falta de qualidade do DNA.;Laboratório: Exigir repetição da placa/leitura ou solicitar novo material para extração.

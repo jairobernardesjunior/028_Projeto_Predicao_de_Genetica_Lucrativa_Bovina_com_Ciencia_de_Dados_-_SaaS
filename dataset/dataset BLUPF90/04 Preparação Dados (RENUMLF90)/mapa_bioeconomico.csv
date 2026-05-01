@@ -1,0 +1,14 @@
+Ordem_Geral;Nome_Trait;ID_Peso;Valor_Economico
+Trait_1;PN_kg;8;-10.0
+Trait_2;PD_kg;1;17.07
+Trait_3;PS_kg;2;4.75
+Trait_4;GPD_g-dia;N/A;0.0
+Trait_5;PE_cm;10;12.0
+Trait_6;AOL_cm2;5;2.5
+Trait_7;EGS_mm;6;8.0
+Trait_8;MAR_%;7;15.0
+Trait_9;CAR_kg-dia;3;-2.5
+Trait_10;PREC_SEX;N/A;0.0
+Trait_11;IPP_dias;9;-1.2
+Trait_12;PROB_3P_%;N/A;0.0
+Trait_13;STAY_%;4;73.21
